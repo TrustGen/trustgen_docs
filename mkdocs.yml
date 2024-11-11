@@ -1,7 +1,7 @@
 site_name: Trustgen Documentation
 site_url: https://trustgen.github.io/trustgen_docs/
-repo_name: trustgen/trustgen_docs
-repo_url: https://github.com/trustgen/trustgen_docs
+repo_name: TrustGen/trustgen_docs
+repo_url: https://github.com/TrustGen/trustgen_docs
 
 theme:
   name: material
@@ -44,5 +44,5 @@ markdown_extensions:
   - md_in_html
   - footnotes
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg

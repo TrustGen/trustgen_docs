@@ -1,17 +1,23 @@
-# Welcome to MkDocs
+# Welcome to Trustgen Documentation
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Welcome to the official documentation for Trustgen. This documentation site contains comprehensive guides and information about our projects and tools.
 
-## Commands
+## Getting Started
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+Choose a section from the navigation menu to begin exploring our documentation.
 
-## Project layout
+## Features
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- Comprehensive documentation
+- Easy navigation
+- Dark/light theme support
+- Full-text search
+- Mobile friendly
+
+## Contributing
+
+We welcome contributions to our documentation! Please visit our [GitHub repository](https://github.com/TrustGen/trustgen_docs) to get started.
+
+## Support
+
+If you need help or have questions, please open an issue in our GitHub repository.
