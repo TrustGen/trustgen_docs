@@ -1,6 +1,12 @@
 # Welcome to Trustgen Documentation
 
-Welcome to the official documentation for Trustgen. This documentation site contains comprehensive guides and information about our projects and tools.
+Welcome to the official documentation for TrustGen. This documentation site contains comprehensive guides and information about our projects and tools. 
+
+
+
+## What's TrustGen
+
+Recognizing that current benchmarks focus narrowly on specific model categories and lack a dynamic nature, we introduce TrustGen, a comprehensive and adaptive benchmark for evaluating GenFMs across multiple dimensions of trustworthiness.
 
 ```                          
  _____  ____   _   _  ____  _____  ____  _____  _   _ 
