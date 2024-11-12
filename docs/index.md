@@ -1,4 +1,4 @@
-# Welcome to Trustgen Documentation
+# Welcome to TrustGen Documentation
 
 Welcome to the official documentation for TrustGen. This documentation site contains comprehensive guides and information about our projects and tools. 
 
@@ -30,7 +30,7 @@ Choose a section from the navigation menu to begin exploring our documentation.
 
 ## Contributing
 
-We welcome contributions to our documentation! Please visit our [GitHub repository](https://github.com/TrustGen/trustgen_docs) to get started.
+We welcome contributions to our documentation! Please visit our [GitHub repository](https://github.com/TrustGen/TrustGen_docs) to get started.
 
 ## Support
 
