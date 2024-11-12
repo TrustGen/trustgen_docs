@@ -1,6 +1,6 @@
 # Welcome to TrustGen Documentation
 
-Welcome to the official documentation for TrustGen. This documentation site contains comprehensive guides and information about our projects and tools. 
+Welcome to the official documentation for **TrustGen**. This documentation site contains comprehensive guides and information about our projects and tools. 
 
 
 
