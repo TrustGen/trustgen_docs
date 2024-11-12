@@ -289,7 +289,7 @@ The Model-Based Generation component leverages advanced language models to direc
 - **Support for Multiple Model Services**
 
 #### Usage
-For detailed instructions on using the model service, refer to the [generation documentation](generation.md).
+For detailed instructions on using the model service, refer to the [ModelService documentation](Evaluation.md).
 
 ## Conclusion
 Data Crafter provides a comprehensive, flexible framework for intelligent data generation, combining web search, section-specific dataset generation, and model-based generation to create high-quality, diverse datasets for various research and application needs.
