@@ -1,10 +1,10 @@
-# Diversity Enhancer
+# Contextual Variator
 
-Diversity Enhancer is a Python toolkit designed to enhance text diversity through various methods. It supports operations for both fixed-format questions (multiple choice, open-ended, or true/false) and non-format-specific text.
+Contextual Variator is a Python toolkit designed to enhance text diversity through various methods. It supports operations for both fixed-format questions (multiple choice, open-ended, or true/false) and non-format-specific text.
 
 ## Recommended Usage: Batch File Processing
 
-The recommended way to use Diversity Enhancer is through `file_handle.py` for batch processing, which is the most efficient method for handling large datasets.
+The recommended way to use Contextual Variator is through `file_handle.py` for batch processing, which is the most efficient method for handling large datasets.
 
 ### Example Folder Structure
 
@@ -95,7 +95,7 @@ python file_handle.py --dataset_folder path/to/your/dataset
 
 ### Multi-turn Dialogue Support
 
-For multi-turn dialogue data, transformation_method should be a 2D list where each sublist corresponds to transformation methods for one turn:
+For multi-turn dialogue data, `transformation_method` should be a 2D list where each sublist corresponds to transformation methods for one turn:
 
 ```json
 {
@@ -126,23 +126,23 @@ Multi-turn dialogue data format:
 
 ## Individual Usage
 
-If you only need to process single sentences or questions, you can also use the DiversityEnhancer class directly.
+If you only need to process single sentences or questions, you can also use the ContextualVariator class directly.
 
 ### Initialization
 
-First, import the DiversityEnhancer class:
+First, import the ContextualVariator class:
 
 ```python
-from diversity_enhancer import DiversityEnhancer
+from contextual_variator import ContextualVariator
 ```
 
-Then, create a DiversityEnhancer instance:
+Then, create a ContextualVariator instance:
 
 ```python
-enhancer = DiversityEnhancer()
+variator = ContextualVariator()
 ```
 
-DiversityEnhancer initialization accepts an optional parameter - a list of supported operations for your queries. If not specified, it initializes with all available operations and randomly selects one strategy for enhancement.
+ContextualVariator initialization accepts an optional parameter - a list of supported operations for your queries. If not specified, it initializes with all available operations and randomly selects one strategy for enhancement.
 
 ```python
 supported_operations = [
@@ -159,7 +159,7 @@ You can also limit it to specific operations:
 operations = [
     "transform_to_multiple_choice"
 ]
-enhancer = DiversityEnhancer(operations)
+variator = ContextualVariator(operations)
 ```
 
 ### Important Notes
@@ -192,25 +192,33 @@ non_format_operations = [
 
 ### enhance_diversity Method
 
-The enhance method parameters depend on the operations you specified when initializing DiversityEnhancer. If you included the fixed format operations `["transform_to_multiple_choice","transform_to_true_false","transform_to_open_ended"]`, you must specify both **current_format** and **answer** parameters. Otherwise, it will only use the general enhance methods `"paraphrase_sentence"` and `"modify_sentence_length"`.
+The `enhance_diversity` method parameters depend on the operations you specified when initializing ContextualVariator. If you included the fixed format operations `["transform_to_multiple_choice","transform_to_true_false","transform_to_open_ended"]`, you must specify both **current_format** and **answer** parameters. Otherwise, it will only use the general enhance methods `"paraphrase_sentence"` and `"modify_sentence_length"`.
 
 - The `keep_original` parameter defaults to `True`. When `True`, there's an equal probability of keeping the original text unchanged (operation method will be "keep_original"). Set to `False` to disable this option.
 - The `extra_instructions` parameter can provide additional guidance to the model. This is an optional string parameter.
 
-Example:
+#### Parameters
+
+- **sentence** (str): The input sentence or query.
+- **current_format** (str, optional): The current format of the query. Required if using fixed format operations.
+- **answer** (str, optional): The ground truth answer. Required if using fixed format operations and you want the answer transformed.
+- **keep_original** (bool, optional): Whether to keep the original text unchanged. Defaults to `True`.
+- **extra_instructions** (str, optional): Additional instructions for the model.
+
+#### Usage
 
 ```python
 import json
-from diversity_enhancer import DiversityEnhancer
-enhancer = DiversityEnhancer()
+from contextual_variator import ContextualVariator
+variator = ContextualVariator()
 
 async def main():
     # non_format query/sentence
-    result = await enhancer.enhance_diversity("This is a test sentence.")
+    result = await variator.enhance_diversity("This is a test sentence.")
     print(json.dumps(result, indent=4))
 
     # offer 'current_format' and 'answer'
-    result = await enhancer.enhance_diversity(
+    result = await variator.enhance_diversity(
         "What is the capital of France?", 
         current_format="Open ended question",
         answer="Paris"
@@ -218,7 +226,7 @@ async def main():
     print(json.dumps(result, indent=4))
 
     # only offer 'current_format'
-    result = await enhancer.enhance_diversity(
+    result = await variator.enhance_diversity(
         "What is the meaning of life?", 
         current_format="Open ended question",
     )
@@ -253,9 +261,15 @@ Example output:
 
 ### 1. Paraphrase Sentence
 
+#### Parameters
+
+- **sentence** (str): The input sentence to paraphrase.
+
+#### Usage
+
 ```python
 sentence = "Life is like a box of chocolates."
-result = await enhancer.paraphrase_sentence(sentence)
+result = await variator.paraphrase_sentence(sentence)
 print(result)
 ```
 
@@ -268,19 +282,22 @@ Output format:
 
 ### 2. Modify Sentence Length
 
+#### Parameters
+
+- **sentence** (str): The input sentence to modify.
+- **length_modification** (str, optional): The type of length modification. Can be "lengthen" or "shorten". Defaults to randomly selecting one.
+
+#### Usage
+
 ```python
 sentence = "The quick brown fox jumps over the lazy dog."
-result = await enhancer.modify_sentence_length(sentence)
+result = await variator.modify_sentence_length(sentence)
 print(result)
 
 # Specify length modification
-result = await enhancer.modify_sentence_length(sentence, "lengthen")
+result = await variator.modify_sentence_length(sentence, "lengthen")
 print(result)
 ```
-
-Available length modification operations:
-- "lengthen"
-- "shorten"
 
 Output format:
 ```json
@@ -292,17 +309,26 @@ Output format:
 
 ### 3. Transform Question Format
 
+#### Parameters
+
+- **current_format** (str): The current format of the question.
+- **current_question** (str): The current question to transform.
+- **answer** (str, optional): The ground truth answer. Required if you want the answer transformed.
+- **target_format** (str, optional): The target format to transform to. If not provided, a random format will be selected.
+
+#### Usage
+
 ```python
 current_format = "Multiple choice question"
 current_question = "What is the capital of France? a) Berlin b) Madrid c) Paris d) Rome"
 answer = "c) Paris" # Optional, provide if ground truth exists
 
 # Random format selection
-result = await enhancer.transform_question_format(current_format, current_question=current_question, answer=answer)
+result = await variator.transform_question_format(current_format, current_question=current_question, answer=answer)
 print(result)
 
 # Specify target format
-result = await enhancer.transform_question_format(
+result = await variator.transform_question_format(
     current_format, 
     target_format="True/False question", 
     current_question=current_question, 
@@ -336,5 +362,3 @@ Output format:
   "format": "True/false question"
 }
 ```
-
-When randomly selecting formats, it will choose from the two formats that aren't the current format. If no ground truth is provided, the output won't include an `answer` field.
