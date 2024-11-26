@@ -1,11 +1,11 @@
 # Metadata Curator
 
 ## Overview
-Metadata Curator is a comprehensive framework designed for intelligent data generation, combining web search, section-specific dataset generation, and model-based generation to create high-quality, diverse datasets for various research and application needs.
+Metadata Curator is designed for intelligent data generation, combining web search, section-specific dataset generation, and model-based generation to create high-quality, diverse datasets for various research and application needs.
 
 ## Components
 
-### Web Search
+### Web-Browsing agents
 #### Running the BingWebSearchPipeline
 
 The `pipeline.py` script automates the process of web searching and result processing. It extracts keywords from user input, performs a Bing search, and processes the results into JSON format.
@@ -38,8 +38,8 @@ The `imageSearchPipeline.py` script automates the process of extracting keywords
 - **include_access_time**: A boolean that indicates whether to include the access time of the web pages in the output. Defaults to `True`.
 - **direct_search_keyword (optional)**: Direct keyword for the search. If provided, this keyword will be used directly. 
 
-### Dataset Pool
-The Dataset Pool component is a mechanism for creating diverse and enriched test sets by leveraging section-specific pipelines. Each section (such as safety, ethics, fairness) contains its own pipeline for generating targeted test datasets.
+### Dataset pool maintainer
+The dataset pool maintainer component is a mechanism for creating diverse and enriched test sets by leveraging section-specific pipelines. Each section (such as safety, ethics, fairness) contains its own pipeline for generating targeted test datasets.
 
 #### Key Features
 - **Section-Specific Generation**: Each research section has a dedicated pipeline for generating relevant test datasets
@@ -50,7 +50,7 @@ The Dataset Pool component is a mechanism for creating diverse and enriched test
 1. **Section Selection**: Choose a specific research section (e.g., safety, ethics, robustness)
 2. **Pipeline Execution**: 
    - Navigate to the section's directory
-   - Run the section's `pipeline.py` or `main.py`
+   - Run the section's `pipeline.py`
    - Generate a domain-specific test dataset
 
 #### Available Sections
@@ -61,8 +61,8 @@ The Dataset Pool component is a mechanism for creating diverse and enriched test
 - Robustness
 - Truthfulness
 
-### Model-Based Generation
-The Model-Based Generation component leverages advanced language models to directly generate synthetic data. This approach provides a flexible and powerful method for creating datasets tailored to specific requirements.
+### Model-based data generators
+The Model-based data generators component leverages advanced language models to directly generate synthetic data. This approach provides a flexible and powerful method for creating datasets tailored to specific requirements.
 
 #### Key Features
 - **Direct Model Invocation**: Call generation services to produce data
