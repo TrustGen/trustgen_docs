@@ -4,7 +4,7 @@ The `ModelService` class is the central utility for managing various models, inc
 
 ---
 
-## Quick Start
+## 1. Quick Start
 
 The `ModelService` is included in the `trustgen` package. To get started:
 
@@ -25,7 +25,7 @@ response = model_service.process("Generate an image of a futuristic city.")
 
 ---
 
-## Initialization
+## 2. Initialization
 
 To create an instance of the `ModelService` class, you need to specify the following parameters:
 
@@ -41,7 +41,7 @@ To create an instance of the `ModelService` class, you need to specify the follo
 
 ---
 
-## Supported Models
+## 3. Supported Models
 
 The `ModelService` supports a wide range of models for text, vision, and text-to-image tasks. Below is a comprehensive table of the supported models, categorized by request type (`llm`, `lvm`, `t2i`), model name, and whether the model uses `api` or `local` inference.
 
@@ -81,7 +81,7 @@ The `ModelService` supports a wide range of models for text, vision, and text-to
 | **T2I**      | `dall-e-3`                                     | `api`        |
 | **T2I**      | `flux-1.1-pro`                                 | `api`        |
 | **T2I**      | `flux_schnell`                                 | `api`        |
-| **T2I**      | `playgroundai/playground-v2.5-1024px-aesthetic`| `local`        |
+| **T2I**      | `playgroundai/playground-v2.5-1024px-aesthetic`| `local`      |
 | **T2I**      | `cogview-3-plus`                               | `api`        |
 | **T2I**      | `sd-3.5-large`                                 | `local`      |
 | **T2I**      | `sd-3.5-large-turbo`                           | `local`      |
@@ -91,11 +91,11 @@ The `ModelService` supports a wide range of models for text, vision, and text-to
 
 ---
 
-## Pipeline Initialization
+## 4. Pipeline Initialization
 
 The `_initialize_pipeline` method sets up the appropriate pipeline based on the provided parameters. It automatically configures the model, handler, and other runtime options.
 
-### Example: Initialize a Stable Diffusion Pipeline for Local Use
+**Example: Initialize a Stable Diffusion Pipeline for Local Use**
 
 ```python
 model_service = ModelService(
@@ -108,20 +108,24 @@ model_service = ModelService(
 
 ---
 
-## Methods
+## 5. Methods
 
-### 1. `process(prompt: Union[str, List[str]], **kwargs) -> Any`
+### **process**
+
+**Definition:**  
+`process(prompt: Union[str, List[str]], **kwargs) -> Any`  
 
 Processes a single prompt or a list of prompts synchronously. It supports both one-off interactions and multi-turn conversations.
 
-#### Parameters:
+**Parameters:**
 - `prompt` (`str` or `List[str]`): The input prompt(s).
 - `**kwargs`: Additional parameters for model customization.
 
-#### Returns:
-- Model-generated responses.
+**Returns:**  
+Model-generated responses.
 
-#### Example:
+**Example:**
+
 ```python
 # Single prompt
 response = model_service.process("Generate an image of a peaceful forest.")
@@ -136,18 +140,22 @@ responses = model_service.process(prompts)
 
 ---
 
-### 2. `process_async(prompt: Union[str, List[str]], **kwargs) -> Awaitable[Any]`
+### **process_async**
+
+**Definition:**  
+`process_async(prompt: Union[str, List[str]], **kwargs) -> Awaitable[Any]`  
 
 Handles requests asynchronously, enabling high concurrency for demanding applications.
 
-#### Parameters:
+**Parameters:**
 - `prompt` (`str` or `List[str]`): The input prompt(s).
-- `**kwargs`: Additional model parameters.
+- `**kwargs`: Additional parameters for model customization.
 
-#### Returns:
-- An awaitable object with the model's response.
+**Returns:**  
+An awaitable object with the model's response.
 
-#### Example:
+**Example:**
+
 ```python
 # Asynchronous prompt
 response = await model_service.process_async("Describe a sunset over the ocean.")
@@ -155,11 +163,11 @@ response = await model_service.process_async("Describe a sunset over the ocean."
 
 ---
 
-## Configuration
+## 6. Configuration
 
 The configuration file (`config.yaml`) specifies model settings, resource allocation, and runtime options. Below is an example configuration format:
 
-### Example Configuration (`config.yaml`)
+**Example Configuration (`config.yaml`):**
 
 ```yaml
 openai_sdk_llms:
