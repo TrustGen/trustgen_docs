@@ -63,9 +63,9 @@ Available current_format:
 
 
 
-### Example Usage
+## Example Usage
 
-#### enhance_diversity method
+### enhance_diversity method
 
 ```python
 import json
@@ -119,7 +119,7 @@ if __name__ == "__main__":
 
 
 
-#### paraphrase_sentence method
+### paraphrase_sentence method
 
 ```python
 sentence = "Life is like a box of chocolates."
@@ -136,7 +136,7 @@ print(result)
 
 
 
-#### modify_sentence_length method
+### modify_sentence_length method
 
 
 ```python
@@ -159,7 +159,7 @@ print(result)
 
 
 
-#### transform_question_format method
+### transform_question_format method
 
 ```python
 current_format = "Multiple choice question"
