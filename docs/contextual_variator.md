@@ -2,16 +2,18 @@
 
 Contextual Variator is designed to enhance text diversity through various methods. It supports operations for both fixed-format questions (multiple choice, open-ended, or true/false) and non-format-specific text.
 
+
+
 ## Operations
 
-### 1. enhance_diversity method
+### enhance_diversity method
 
 The `enhance_diversity` method parameters depend on the operations you specified when initializing ContextualVariator. If you included the fixed format operations `["transform_to_multiple_choice","transform_to_true_false","transform_to_open_ended"]`, you must specify both **current_format** and **answer** parameters. Otherwise, it will only use the general enhance methods `"paraphrase_sentence"` and `"modify_sentence_length"`.
 
 - The `keep_original` parameter defaults to `True`. When `True`, there's an equal probability of keeping the original text unchanged (operation method will be "keep_original"). Set to `False` to disable this option.
 - The `extra_instructions` parameter can provide additional guidance to the model. This is an optional string parameter.
 
-#### Parameters
+**Parameters**
 
 - **sentence** (str): The input sentence or query.
 - **current_format** (str, optional): The current format of the query. Required if using fixed format operations.
@@ -21,32 +23,32 @@ The `enhance_diversity` method parameters depend on the operations you specified
 
 
 
-### 2. paraphrase_sentence method
+### paraphrase_sentence method
 
 The `paraphrase_sentence` method is designed to generate a new version of the input sentence while maintaining its original meaning. This method is particularly useful for diversifying the phrasing of a given sentence without altering its core content. The paraphrased sentence will be structurally different from the original, potentially using different words, sentence structures, or grammatical constructs, but it will convey the same meaning.
 
-#### Parameters
+**Parameters**
 
 - **sentence** (str): The input sentence to paraphrase.
 
 
 
-### 3. modify_sentence_length method
+### modify_sentence_length method
 
 The `modify_sentence_length` method is used to adjust the length of the input sentence. This method can either lengthen or shorten the sentence, depending on the specified or randomly selected length modification type. Lengthening a sentence involves adding more detail but ensuring that the core meaning of the sentence remains intact, while shortening a sentence involves condensing the information into fewer words. 
 
-#### Parameteras
+**Parameteras**
 
 - **sentence** (str): The input sentence to modify.
 - **length_modification** (str, optional): The type of length modification. Can be "lengthen" or "shorten". Defaults to randomly selecting one.
 
 
 
-### 4. transform_question_format method
+### transform_question_format method
 
 The `transform_question_format` method is used to convert a question from one format to another. This method supports transforming questions between multiple-choice, true/false, and open-ended formats. If a ground truth answer is provided, the method will ensure that the transformed question retains the correct answer. 
 
-#### Parameters
+**Parameters**
 
 - **current_format** (str): The current format of the question.
 - **current_question** (str): The current question to transform.
@@ -63,7 +65,7 @@ Available current_format:
 
 ### Example Usage
 
-#### 1. enhance_diversity method
+#### enhance_diversity method
 
 ```python
 import json
@@ -95,7 +97,7 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-Example output:
+**Output format:**
 
 ```json
 {
@@ -117,7 +119,7 @@ Example output:
 
 
 
-#### 2. paraphrase_sentence method
+#### paraphrase_sentence method
 
 ```python
 sentence = "Life is like a box of chocolates."
@@ -125,7 +127,7 @@ result = await variator.paraphrase_sentence(sentence)
 print(result)
 ```
 
-Output format:
+**Output format:**
 ```json
 {
   "sentence": "Life resembles a box of chocolates; you never know what you're going to get."
@@ -134,7 +136,7 @@ Output format:
 
 
 
-#### 3. modify_sentence_length method
+#### modify_sentence_length method
 
 
 ```python
@@ -147,7 +149,7 @@ result = await variator.modify_sentence_length(sentence, "lengthen")
 print(result)
 ```
 
-Output format:
+**Output format:**
 ```json
 {
   "sentence": "The swift and agile brown fox gracefully leaps over the indolent and sluggish canine.",
@@ -157,7 +159,7 @@ Output format:
 
 
 
-#### 4. transform_question_format method
+#### transform_question_format method
 
 ```python
 current_format = "Multiple choice question"
@@ -178,7 +180,7 @@ result = await variator.transform_question_format(
 print(result)
 ```
 
-Output format:
+**Output format:**
 ```json
 {
     "sentence": "What is the capital of France?",
@@ -205,7 +207,7 @@ Output format:
 
 The recommended way to use Contextual Variator is through `file_handle.py` for batch processing, which is the most efficient method for handling large datasets.
 
-### Example Folder Structure
+**Example Folder Structure**
 
 ```
 your_dataset/
@@ -215,7 +217,7 @@ your_dataset/
 └── data_3.json
 ```
 
-### Configuration File Example (file_config.json)
+**Configuration File Example (file_config.json)**
 
 ```json
 [
@@ -239,7 +241,7 @@ your_dataset/
 ]
 ```
 
-### Input File Format Example (data_1.json)
+**Input File Format Example (data_1.json)**
 
 ```json
 [
@@ -255,7 +257,7 @@ your_dataset/
 ]
 ```
 
-### Output File Format Example (data_1_enhanced.json)
+**Output File Format Example (data_1_enhanced.json)**
 
 ```json
 [
@@ -280,7 +282,7 @@ your_dataset/
 ]
 ```
 
-### Usage
+**Usage**
 
 1. Prepare your dataset folder containing:
    - Configuration file `file_config.json`
@@ -293,8 +295,7 @@ python file_handle.py --dataset_folder path/to/your/dataset
 ```
 
 
-
-### Multi-turn Dialogue Support
+**Multi-turn Dialogue Support**
 
 For multi-turn dialogue data, `transformation_method` should be a 2D list where each sublist corresponds to transformation methods for one turn:
 

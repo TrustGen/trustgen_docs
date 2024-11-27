@@ -3,14 +3,17 @@
 ## Overview
 Metadata Curator is designed for intelligent data generation, combining web search, section-specific dataset generation, and model-based generation to create high-quality, diverse datasets for various research and application needs.
 
+
+
 ## Components
 
 ### Web-Browsing agents
-#### Running the BingWebSearchPipeline
 
-The `pipeline.py` script automates the process of web searching and result processing. It extracts keywords from user input, performs a Bing search, and processes the results into JSON format.
+#### BingWebSearchPipeline
 
-#### Parameters
+The `BingWebSearchPipeline` automates the process of web searching and result processing. It extracts keywords from user input, performs a Bing search, and processes the results into JSON format.
+
+**Parameters**
 
 - **instruction**: A string that specifies the user's instruction for what to find on the web pages.
 - **basic information**: A dictionary that defines the specific information for the search.
@@ -26,10 +29,10 @@ The `pipeline.py` script automates the process of web searching and result proce
 - **direct_search_keyword (optional)**: Direct keyword for the search. If provided, this keyword will be used directly. 
 - **direct_site (optional)**: Specific site to search within. If provided, the search will be limited to this site. If there are multiple specified websites, please separate them with commas, for example`"www.wikipedia.com,www.nytimes.com"`
 
-### Running the imageSearchPipeline
-The `imageSearchPipeline.py` script automates the process of extracting keywords from user input, performing a Bing image search, and processing the results into JSON format.
+#### BingImageSearchPipeline
+The `imageSearchPipeline` automates the process of extracting keywords from user input, performing a Bing image search, and processing the results into JSON format.
 
-#### Parameters
+**Parameters**
 
 - **instruction**: A string that specifies the user's instruction for what kind of images to find.
 - **basic_information**: A dictionary that defines the specific information for the search (e.g., breed of dog, age, etc.).
@@ -38,22 +41,25 @@ The `imageSearchPipeline.py` script automates the process of extracting keywords
 - **include_access_time**: A boolean that indicates whether to include the access time of the web pages in the output. Defaults to `True`.
 - **direct_search_keyword (optional)**: Direct keyword for the search. If provided, this keyword will be used directly. 
 
+
+
 ### Dataset pool maintainer
+
 The dataset pool maintainer component is a mechanism for creating diverse and enriched test sets by leveraging section-specific pipelines. Each section (such as safety, ethics, fairness) contains its own pipeline for generating targeted test datasets.
 
-#### Key Features
+**Key Features**
 - **Section-Specific Generation**: Each research section has a dedicated pipeline for generating relevant test datasets
 - **Targeted Data Creation**: Pipelines focus on producing datasets specific to their domain's unique requirements
 - **Diversity and Representation**: Ensure comprehensive coverage of potential scenarios
 
-#### Workflow
+**Workflow**
 1. **Section Selection**: Choose a specific research section (e.g., safety, ethics, robustness)
 2. **Pipeline Execution**: 
    - Navigate to the section's directory
    - Run the section's `pipeline.py`
    - Generate a domain-specific test dataset
 
-#### Available Sections
+**Available Sections**
 - Safety
 - Ethics
 - Fairness
@@ -61,20 +67,27 @@ The dataset pool maintainer component is a mechanism for creating diverse and en
 - Robustness
 - Truthfulness
 
+
+
 ### Model-based data generators
+
 The Model-based data generators component leverages advanced language models to directly generate synthetic data. This approach provides a flexible and powerful method for creating datasets tailored to specific requirements.
 
-#### Key Features
+**Key Features**
 - **Direct Model Invocation**: Call generation services to produce data
 - **Configurable Generation Parameters**
 - **Support for Multiple Model Services**
 
-#### Usage
+**Usage**
 For detailed instructions on using the model service, refer to the [ModelService documentation](Evaluation.md).
+
+
 
 ## Quickstart
 
-### Web Search Pipeline
+### Web-Browsing agents
+
+**BingWebSearchPipeline**
 
 ```python
 import asyncio
@@ -113,7 +126,7 @@ if __name__ == "__main__":
     main()
 ```
 
-### Image Search Pipeline
+**BingImageSearchPipeline**
 
 ```python
 import asyncio
@@ -131,6 +144,8 @@ if __name__ == "__main__":
     main()
 ```
 
+
+
 ### Dataset Pool
 
 ```python
@@ -141,9 +156,13 @@ cd section/robustness/robustness_llm
 python pipeline.py
 ```
 
-## Output Format
 
-### Web Search Pipeline
+
+### Output Format
+
+#### Web-Browsing agents
+
+**BingWebSearchPipeline**
 
 The generated JSON file will have the following structure:
 
@@ -170,7 +189,7 @@ The generated JSON file will have the following structure:
 ]
 ```
 
-### Image Search Pipeline
+**BingImageSearchPipeline**
 
 The generated JSON file will have the following structure:
 
