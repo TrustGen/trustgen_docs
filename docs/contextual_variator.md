@@ -1,5 +1,6 @@
 # Contextual Variator
 
+## Overview
 Contextual Variator is designed to enhance text diversity through various methods. It supports operations for both fixed-format questions (multiple choice, open-ended, or true/false) and non-format-specific text.
 
 
