@@ -29,6 +29,16 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
+nav:
+  - Home: index.md
+  - Getting Started: get_started.md
+  - Dataset: dataset.md
+  - Metadata Curator: metadata_curator.md
+  - Contextual Variator: contextual_variator.md
+  - Model Service: ModelService.md
+  - FAQ: FAQ.md
+  - Changelog: changelog.md
+
 plugins:
   - search
 

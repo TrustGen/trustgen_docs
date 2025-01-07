@@ -18,7 +18,13 @@ Recognizing that current benchmarks focus narrowly on specific model categories 
 
 ## Getting Started
 
-Choose a section from the navigation menu to begin exploring our documentation.
+Please check our [Getting Started Guide](get_started.md) for detailed installation and usage instructions. The guide includes:
+
+- Step-by-step installation process
+- API key configuration
+- Quick start examples for AI risk evaluation
+- Detailed usage instructions for each component
+- Guide to generate and interpret trustworthiness reports
 
 ## Features
 
